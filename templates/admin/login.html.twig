@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+    <title>Вхід</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="outer">
+    <div class="centerit">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <br>
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        <h1 class="h3 mb-3 font-weight-normal">Форма входу</h1>
+                        <label for="inputUsername" class="sr-only">Логін</label>
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Логін" required autofocus>
+                        <br>
+                        <label for="inputPassword" class="sr-only">Пароль</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}">
+
+                        <br>
+                        <button class="btn btn-lg btn-success login-buttons" type="submit">Вхід</button>
+                        <span class="pull-right">
+                        <a class="btn btn-lg btn-default login-buttons login-get-back-btn" href="{{ app.request.getSchemeAndHttpHost() }}">Назад</a>
+                    </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
