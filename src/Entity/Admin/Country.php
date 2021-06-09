@@ -3,6 +3,7 @@
 namespace App\Entity\Admin;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -24,38 +25,32 @@ class Country
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\PositiveOrZero()
      */
     private $goldMedalAmount;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\PositiveOrZero()
      */
     private $silverMedalAmount;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\PositiveOrZero()
      */
     private $bronzeMedalAmount;
 
-    /**
-     * @return int
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
     public function setName($name)
     {
         $this->name = $name;

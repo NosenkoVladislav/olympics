@@ -101,7 +101,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('country_index', [],UrlGeneratorInterface::ABSOLUTE_URL));
+        return new RedirectResponse($this->urlGenerator->generate('admin_country_index', [],UrlGeneratorInterface::ABSOLUTE_URL));
     }
 
     protected function getLoginUrl()

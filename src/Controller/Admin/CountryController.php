@@ -10,14 +10,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/country")
+ * @Route("/admin/country", name="admin_")
  */
 class CountryController extends AbstractController
 {
     /**
      * @Route("/", name="country_index", methods={"GET"})
      */
-    public function indexAll(): Response
+    public function index(): Response
     {
         $countries = $this->getDoctrine()
             ->getRepository(Country::class)
@@ -42,22 +42,12 @@ class CountryController extends AbstractController
             $entityManager->persist($country);
             $entityManager->flush();
 
-            return $this->redirectToRoute('country_index');
+            return $this->redirectToRoute('admin_country_index');
         }
 
         return $this->render('admin/country/new.html.twig', [
             'country' => $country,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="country_show", methods={"GET"})
-     */
-    public function show(Country $country): Response
-    {
-        return $this->render('admin/country/show.html.twig', [
-            'country' => $country,
         ]);
     }
 
@@ -72,7 +62,7 @@ class CountryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('country_index');
+            return $this->redirectToRoute('admin_country_index');
         }
 
         return $this->render('admin/country/edit.html.twig', [
@@ -84,12 +74,12 @@ class CountryController extends AbstractController
     /**
      * @Route("/{id}", name="country_delete")
      */
-    public function delete(Request $request, Country $country): Response
+    public function delete(Country $country): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($country);
         $entityManager->flush();
 
-        return $this->redirectToRoute('country_index');
+        return $this->redirectToRoute('admin_country_index');
     }
 }

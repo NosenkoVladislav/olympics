@@ -1,4 +1,9 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    <div class="form-controls">
+        <button class="btn btn-success form-btn-back">{{ button_label|default('Зберегти') }}</button>
+        <a href="{{ path('admin_country_index') }}" class="btn btn-secondary">Повернутись</a>
+    </div>
+
 {{ form_end(form) }}

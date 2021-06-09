@@ -1,39 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Country index{% endblock %}
+{% block title %}Результати{% endblock %}
 
 {% block body %}
-    <h1>Country index</h1>
+    <div class="col-12">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Назва країни</th>
-                <th>Золото</th>
-                <th>Срібло</th>
-                <th>Бронза</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for country in countries %}
-            <tr>
-                <td>{{ country.name }}</td>
-                <td>{{ country.goldMedalAmount }}</td>
-                <td>{{ country.silverMedalAmount }}</td>
-                <td>{{ country.bronzeMedalAmount }}</td>
-                <td>
-                    <a href="{{ path('country_show', {'id': country.id}) }}">show</a>
-                    <a href="{{ path('country_edit', {'id': country.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <h1>Результати</h1>
 
-    <a href="{{ path('country_new') }}">Create new</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Назва країни</th>
+                    <th>Золото</th>
+                    <th>Срібло</th>
+                    <th>Бронза</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for country in countries %}
+                <tr>
+                    <td>{{ country.name }}</td>
+                    <td>{{ country.goldMedalAmount }}</td>
+                    <td>{{ country.silverMedalAmount }}</td>
+                    <td>{{ country.bronzeMedalAmount }}</td>
+                    <td>
+                        <a title="Редагувати" class="btn btn-warning"
+                           href="{{ path('admin_country_edit', {'id': country.id}) }}">
+                            <i class="material-icons" style="display: block; color: white">mode_edit</i>
+                        </a>
+                        <a title="Видалити" class="btn btn-danger"
+                           href="{{ path('admin_country_delete', {'id': country.id}) }}"
+                           onclick="return confirm('Ви точно бажаєте видалити об\'єкт?');">
+                            <i class="material-icons" style="display: block">delete</i>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Записи відсутні</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('admin_country_new') }}" class="btn btn-primary add-new-btn" title="Додати">
+            <i class="material-icons">add</i>
+        </a>
+
+    </div>
 {% endblock %}
