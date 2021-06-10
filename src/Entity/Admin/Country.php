@@ -93,12 +93,12 @@ class Country
         $this->bronzeMedalAmount = $bronzeMedalAmount;
     }
 
-    public function setCountryCode($countryCode): void
+    public function getCountryCode()
     {
-        $this->countryCode = $countryCode;
+        return $this->countryCode;
     }
 
-    public function getCountryCode($countryCode)
+    public function setCountryCode($countryCode): void
     {
         $this->countryCode = $countryCode;
     }

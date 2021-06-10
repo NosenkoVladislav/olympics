@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Admin\Country;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,7 +26,9 @@ class CountryType extends AbstractType
             ->add('bronzeMedalAmount', NumberType::class, [
                 'label' => 'Бронзові медалі'
             ])
-            ->add('countryCode', TextType::class)
+            ->add('countryCode', TextType::class,[
+                'label' => 'Код країни'
+            ])
         ;
     }
 

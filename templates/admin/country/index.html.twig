@@ -14,6 +14,7 @@
                     <th>Золото</th>
                     <th>Срібло</th>
                     <th>Бронза</th>
+                    <th>Код країни</th>
                     <th></th>
                 </tr>
             </thead>
@@ -24,6 +25,7 @@
                     <td>{{ country.goldMedalAmount }}</td>
                     <td>{{ country.silverMedalAmount }}</td>
                     <td>{{ country.bronzeMedalAmount }}</td>
+                    <td>{{ country.countryCode }}</td>
                     <td>
                         <a title="Редагувати" class="btn btn-warning"
                            href="{{ path('admin_country_edit', {'id': country.id}) }}">
