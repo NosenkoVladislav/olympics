@@ -3,25 +3,24 @@
 {% block title %}Country index{% endblock %}
 
 {% block body %}
-    <h1>Country index</h1>
-
     <table class="table">
         <thead>
-        <tr>
-            <th>Назва країни</th>
-            <th>Золото</th>
-            <th>Срібло</th>
-            <th>Бронза</th>
+        <tr class="t-header">
             <th></th>
+            <th>Назва країни</th>
+            <th class="t-centred"><img src="https://a.espncdn.com/i/oly/medals/gold.svg" alt=""></th>
+            <th class="t-centred"><img src="https://a.espncdn.com/i/oly/medals/silver.svg" alt=""></th>
+            <th class="t-centred"><img src="https://a.espncdn.com/i/oly/medals/bronze.svg" alt=""></th>
         </tr>
         </thead>
         <tbody>
         {% for country in countries %}
             <tr>
+                <td><img src="https://www.countryflags.io/{{ country.countryCode }}/flat/64.png"></td>
                 <td>{{ country.name }}</td>
-                <td>{{ country.goldMedalAmount }}</td>
-                <td>{{ country.silverMedalAmount }}</td>
-                <td>{{ country.bronzeMedalAmount }}</td>
+                <td class="t-centred">{{ country.goldMedalAmount }}</td>
+                <td class="t-centred">{{ country.silverMedalAmount }}</td>
+                <td class="t-centred">{{ country.bronzeMedalAmount }}</td>
             </tr>
         {% else %}
             <tr>

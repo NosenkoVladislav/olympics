@@ -41,6 +41,13 @@ class Country
      */
     private $bronzeMedalAmount;
 
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $countryCode;
+
+
     public function getId()
     {
         return $this->id;
@@ -84,5 +91,15 @@ class Country
     public function setBronzeMedalAmount($bronzeMedalAmount)
     {
         $this->bronzeMedalAmount = $bronzeMedalAmount;
+    }
+
+    public function setCountryCode($countryCode): void
+    {
+        $this->countryCode = $countryCode;
+    }
+
+    public function getCountryCode($countryCode)
+    {
+        $this->countryCode = $countryCode;
     }
 }

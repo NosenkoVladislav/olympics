@@ -27,6 +27,7 @@ class CountryType extends AbstractType
             ->add('bronzeMedalAmount', NumberType::class, [
                 'label' => 'Бронзові медалі'
             ])
+            ->add('countryCode', TextType::class)
         ;
     }
 

@@ -5,3 +5,11 @@
 .badge-danger {
     background-color: #e63629;
 }
+
+.t-header {
+    background: #efefef;
+}
+
+.t-centred {
+    text-align: center;
+}
