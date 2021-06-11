@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class StandingsController extends AbstractController
 {
     private const UKRAINE = 'Україна';
+    private $ukraine = '';
 
     /**
      * @Route("/all", name="countries_all", methods={"GET"})
@@ -32,16 +33,23 @@ class StandingsController extends AbstractController
             ->getRepository(Country::class)
             ->findBy([], ['goldMedalAmount' => 'DESC']);
 
+        $topFive = [];
+
         foreach ($countries as $country) {
             if ($country->getName() === self::UKRAINE) {
-                array_unshift($countries, $country);
+                $this->ukraine = $country;
+                unset($country);
+            } else {
+                $topFive[] = $country;
             }
         }
 
-        $result = array_slice($countries, 0, 5, false);
+        array_unshift($topFive, $this->ukraine);
+
+        $topFive = array_slice($topFive, 0, 5, false);
 
         return $this->render('site/standings.html.twig', [
-            'countries' => $result,
+            'countries' => $topFive,
         ]);
     }
 }
