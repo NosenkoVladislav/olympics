@@ -10,6 +10,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>№</th>
                     <th>Назва країни</th>
                     <th>Золото</th>
                     <th>Срібло</th>
@@ -21,6 +22,7 @@
             <tbody>
             {% for country in countries %}
                 <tr>
+                    <td>{{ loop.index }}</td>
                     <td>{{ country.name }}</td>
                     <td>{{ country.goldMedalAmount }}</td>
                     <td>{{ country.silverMedalAmount }}</td>
