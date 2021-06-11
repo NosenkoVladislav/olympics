@@ -10,6 +10,6 @@
     background: #efefef;
 }
 
-.t-centred {
+.table > td {
     text-align: center;
 }

@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Редагування{% endblock %}
+{% block title %}Редагування країни{% endblock %}
 
 {% block body %}
     <div class="col-12">
         <h1>Редагування результатів: <span style="text-decoration: underline">{{ country.name }}</span></h1>
 
         {{ include('admin/country/_form.html.twig', {'button_label': 'Зберегти'}) }}
-
     </div>
 {% endblock %}

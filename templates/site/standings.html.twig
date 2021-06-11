@@ -1,30 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Country index{% endblock %}
+{% block title %}
+    {% if app.request.attributes.get('_route') == 'country_top_five' %}
+        Топ п'ять
+    {% else %}
+        Країни - учасники
+    {% endif %}
+{% endblock %}
 
 {% block body %}
     <table class="table">
         <thead>
         <tr class="t-header">
-            <th></th>
-            <th>Назва країни</th>
-            <th class="t-centred"><img src="https://a.espncdn.com/i/oly/medals/gold.svg" alt=""></th>
-            <th class="t-centred"><img src="https://a.espncdn.com/i/oly/medals/silver.svg" alt=""></th>
-            <th class="t-centred"><img src="https://a.espncdn.com/i/oly/medals/bronze.svg" alt=""></th>
+            <th>№</th>
+            <th>Прапор</th>
+            <th>Країна</th>
+            <th>
+                <img src="https://a.espncdn.com/i/oly/medals/gold.svg" alt="">
+            </th>
+            <th>
+                <img src="https://a.espncdn.com/i/oly/medals/silver.svg" alt="">
+            </th>
+            <th>
+                <img src="https://a.espncdn.com/i/oly/medals/bronze.svg" alt="">
+            </th>
         </tr>
         </thead>
         <tbody>
         {% for country in countries %}
             <tr>
-                <td><img src="https://www.countryflags.io/{{ country.countryCode }}/flat/64.png"></td>
+                <td>{{ loop.index }}</td>
+                <td>
+                    <span class="img-background">
+                        <img src="https://www.countryflags.io/{{ country.countryCode }}/flat/64.png"
+                             alt="{{ country.countryCode }}">
+                    </span>
+                </td>
                 <td>{{ country.name }}</td>
-                <td class="t-centred">{{ country.goldMedalAmount }}</td>
-                <td class="t-centred">{{ country.silverMedalAmount }}</td>
-                <td class="t-centred">{{ country.bronzeMedalAmount }}</td>
+                <td>{{ country.goldMedalAmount }}</td>
+                <td>{{ country.silverMedalAmount }}</td>
+                <td>{{ country.bronzeMedalAmount }}</td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Записи відсутні</td>
             </tr>
         {% endfor %}
         </tbody>
